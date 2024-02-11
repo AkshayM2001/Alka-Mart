@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views import View
 from .models import Customer,Product,Cart,OrderPlaced
 
-def home(request):
- return render(request, 'app/home.html')
+# def home(request):
+#  return render(request, 'app/home.html')
 
 class ProductView(View):
  """docstring for ClassName"""
@@ -14,8 +14,7 @@ class ProductView(View):
   mobiles = Product.objects.filter(category='M')
   laptops = Product.objects.filter(category='L')
 #   Kurties = Product.objects.filter(category='K')
-  context = {'topwears':topwears,'bottomwears':bottomwears,'mobiles':mobiles,'laptops':laptops}
-  return render(request, 'app/home.html', {context})
+  return render(request, 'app/home.html', {'topwears':topwears,'bottomwears':bottomwears,'mobiles':mobiles,'laptops':laptops})
 
 def product_detail(request):
  return render(request, 'app/productdetail.html')
