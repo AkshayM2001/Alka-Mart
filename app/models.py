@@ -57,9 +57,14 @@ CATEGORY_CHOICES = (
     ('L', 'Laptop'),
     ('TW', 'Top Wear'),
     ('BW', 'Bottom Wear'),
-    ('TWW', 'Top Wear Women'),
-    ('BWW', 'Bottom Wear Women'),
+    # ('TWW', 'Top Wear Women'),
+    # ('BWW', 'Bottom Wear Women'),
     ('K', 'Kurties'),
+    ('BP', 'Beauty Products'),
+    ('MA', 'Mobile Accessories'),
+    ('SW', 'Smart Watches'),
+    ('EB', 'Ear Buds'),
+    ('SW', 'Smart Watches'),
 )
 
 class Product(models.Model):
