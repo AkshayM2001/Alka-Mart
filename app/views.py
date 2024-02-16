@@ -49,7 +49,14 @@ def mobile(request, data=None):
   mobiles = Product.objects.filter(category='M')
  elif data == 'REALME' or data == 'APPLE':
   mobiles = Product.objects.filter(category='M').filter(brand=data)
- return render(request, 'app/mobile.html')
+ elif data == 'Below':
+  mobiles = Product.objects.filter(category='M').filter(discounted_price__lt=10000)
+ elif data == 'Below-15k':
+  mobiles = Product.objects.filter(category='M').filter(discounted_price__lt=15000)
+ elif data == 'Above':
+  mobiles = Product.objects.filter(category='M').filter(discounted_price__gt=15000)
+ 
+ return render(request, 'app/mobile.html', {'mobile':mobiles})
 
 def login(request):
  return render(request, 'app/login.html')

@@ -9,11 +9,14 @@
         <a href="{% url 'mobile' %}" class="list-group-item list-group-item-action" aria-current="true">All Mobiles</a>
         <a href="{% url 'mobiledata' 'REALME' %}" class="list-group-item list-group-item-action" aria-current="true">Realme</a>
         <a href="{% url 'mobiledata' 'APPLE' %}" class="list-group-item list-group-item-action" aria-current="true">Apple</a>
+        <a href="{% url 'mobiledata' 'Below' %}" class="list-group-item list-group-item-action" aria-current="true">Under 10000</a>
+        <a href="{% url 'mobiledata' 'Below-15k' %}" class="list-group-item list-group-item-action" aria-current="true">Under 15000</a>
+        <a href="{% url 'mobiledata' 'Above' %}" class="list-group-item list-group-item-action" aria-current="true">Above 15000</a>
     </div>
   </div>
   <div class="col-sm-8">
     <div class="row">
-        {% for product in mobiles %}
+        {% for product in mobile %}
             <div class="col-sm4 text-center mb-4">
                 <a href="{% url 'product-detail' product.id %}" class="btn">
                     <div class="item">
