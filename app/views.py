@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from .models import Customer,Product,Cart,OrderPlaced
+from .forms import CustomerRegistrationForm
 
 # def home(request):
 #  return render(request, 'app/home.html')
@@ -55,14 +56,19 @@ def mobile(request, data=None):
   mobiles = Product.objects.filter(category='M').filter(discounted_price__lt=15000)
  elif data == 'Above':
   mobiles = Product.objects.filter(category='M').filter(discounted_price__gt=15000)
- 
  return render(request, 'app/mobile.html', {'mobile':mobiles})
 
 def login(request):
  return render(request, 'app/login.html')
 
-def customerregistration(request):
- return render(request, 'app/customerregistration.html')
+# def customerregistration(request):
+#  return render(request, 'app/customerregistration.html')
+
+class CustomerRegistrationView(View):
+ def get(self, request):
+  form = CustomerRegistrationForm()
+  return render(request, 'app/customeregistration.html')
+
 
 def checkout(request):
  return render(request, 'app/checkout.html')
