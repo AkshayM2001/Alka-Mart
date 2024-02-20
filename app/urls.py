@@ -23,6 +23,8 @@ urlpatterns = [
     path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
     path('passwordchange/', auth_views.PasswordChangeView.as_view(template_name='app/passwordchange.html', form_class=MyPasswordChangeForm, success_url='/passwordchangedone/'), name='passwordchange'),
     path('passwordchangedone/', auth_views.PasswordChangeDoneView.as_view(template_name='app/passwordchangedone.html'), name='passwordchangedone'),
+    path('password-reset/', auth_views.PasswordResetView.as_view(template_name='app/password_reset.html', form_class=MyPasswordChangeForm), name='password_reset'),
+
     # path('registration/', views.customerregistration, name='customerregistration'),
     path('checkout/', views.checkout, name='checkout'),] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
