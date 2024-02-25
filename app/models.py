@@ -71,6 +71,7 @@ class Product(models.Model):
     title = models.CharField(max_length=100)
     selling_price = models.FloatField()
     discounted_price = models.FloatField()
+    # shipping_charges = models.FloatField()
     description = models.TextField()
     brand = models.CharField(max_length=100)
     category = models.CharField(choices = CATEGORY_CHOICES, max_length=3)
@@ -78,6 +79,7 @@ class Product(models.Model):
 
     def __str__(self):
         return str(self.id)
+
     
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -86,6 +88,11 @@ class Cart(models.Model):
 
     def __str__(self):
         return str(self.id)
+    
+    @property
+    def total_cost(self):
+        return self.quantity * self.product.discounted_price
+
 
 STATUS_CHOICES =(
     ('Accepted', 'Accepted'),
