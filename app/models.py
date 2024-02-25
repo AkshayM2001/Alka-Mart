@@ -85,6 +85,7 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
+    # cart_count = models.ForeignKey('self', on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.id)
@@ -92,6 +93,9 @@ class Cart(models.Model):
     @property
     def total_cost(self):
         return self.quantity * self.product.discounted_price
+    
+    # def count_direct_products_in_cart(cart_count):
+    #     return cart_count.quantity + sum(child_cart.cartproduct_set.count() for child_cart in cart_count.cart_count.all() if child_cart.cart is None)
 
 
 STATUS_CHOICES =(
@@ -112,4 +116,13 @@ class OrderPlaced(models.Model):
     @property
     def total_cost(self):
         return self.quantity * self.product.discounted_price
+    
+
+class Payment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    amount = models.FloatField()
+    razorpay_order_id = models.CharField(blank=True, null=True, max_length=50)
+    razorpay_payment_status = models.CharField(blank=True, null=True, max_length=50)
+    razorpay_payment_id = models.CharField(blank=True, null=True, max_length=50)
+    paid = models.BooleanField(default=False)
    
