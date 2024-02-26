@@ -19,6 +19,7 @@ class ProductView(View):
   mobiles = Product.objects.filter(category='M')
   laptops = Product.objects.filter(category='L')
 #   Kurties = Product.objects.filter(category='K')
+  
   return render(request, 'app/home.html', {'topwears':topwears,'bottomwears':bottomwears,'mobiles':mobiles,'laptops':laptops})
 
 # def product_detail(request):
